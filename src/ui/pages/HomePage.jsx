@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-
 import StatsCard from "../molecules/StatsCard";
 import Table from "../molecules/Table";
 import Link from "next/link";
@@ -10,51 +9,43 @@ const HomePage = () => {
   const stats = [
     {
       title: "Missing Documents",
-      span: "trained",
       icon: "/icon/icon.svg",
       count: "24",
-      growth: "8.5",
     },
     {
       title: "Success Loans",
-      span: "",
       icon: "/icon/icon.svg",
       count: "245",
-      growth: "1.3",
     },
     {
       title: "Process Loans",
-      span: "theory",
       icon: "/icon/icon.svg",
       count: "32",
-      growth: "4.3",
-      timeline: "yesterday",
     },
     {
       title: "Total Loans",
-      span: "",
       icon: "/icon/progress.svg",
       count: "85%",
-      growth: "1.8",
-      timeline: "yesterday",
     },
   ];
 
   return (
-    <div>
-      <section className="space-y-4 mb-5 mt-16 bg-[#f1f5f9] ">
-        <div className="grid lg:grid-cols-4 ">
-          {stats.map((stat, index) => (
-            <StatsCard key={index} {...stat} />
-          ))}
-        </div>
+    <div className="px-4 md:px-6 lg:px-10 pt-20 pb-8 bg-[#f1f5f9] min-h-screen">
+      {/* Stats Cards */}
+      <section className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center mb-6">
+        {stats.map((stat, index) => (
+          <StatsCard key={index} {...stat} />
+        ))}
       </section>
 
-      <span className="text-2xl text-[#64748B] mb-5 font-light">
+      {/* Title */}
+      <h2 className="text-xl sm:text-2xl text-[#64748B] mb-4 font-light">
         Pending Loans
-      </span>
-      <div className="flex w mt-5 w-[1182px] mb-6 justify-between">
-        <div className="flex items-center w-[320px] h-[32px] py-1 pl-2 gap-3 rounded-full border border-gray-300 bg-white">
+      </h2>
+
+      {/* Search and Button */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div className="flex items-center w-full sm:w-[320px] h-[36px] py-1 pl-3 gap-3 rounded-full border border-gray-300 bg-white">
           <Image
             src="/icon/search.svg"
             alt="Search Icon"
@@ -68,14 +59,19 @@ const HomePage = () => {
             className="bg-transparent outline-none text-sm w-full"
           />
         </div>
+
         <Link
           href="/Identification"
-          className="w-[161px] h-[36px] px-4 py-2  rounded-[4px] bg-[#0EA5E9] text-white text-sm shadow"
+          className="w-full sm:w-auto h-[36px] px-4 py-2 rounded bg-[#0EA5E9] text-white text-sm text-center shadow"
         >
           Add New Borrower
         </Link>
       </div>
-      <Table />
+
+      {/* Table */}
+      <div className="overflow-x-auto bg-white rounded shadow-sm">
+        <Table />
+      </div>
     </div>
   );
 };

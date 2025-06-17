@@ -49,30 +49,16 @@ const dummyNotifications = [
     time: "4:13 PM",
     color: "bg-indigo-100 text-indigo-700",
   },
-  {
-    sender: "Clifford Morgan",
-    label: "User",
-    message: "Enhance Your Brand Potential With Giant Advertising Blimps",
-    time: "4:13 PM",
-    color: "bg-indigo-100 text-indigo-700",
-  },
-  {
-    sender: "Clifford Morgan",
-    label: "User",
-    message: "Enhance Your Brand Potential With Giant Advertising Blimps",
-    time: "4:13 PM",
-    color: "bg-indigo-100 text-indigo-700",
-  },
 ];
 
 const Notification = () => {
   return (
-    <div className="w-full flex justify-center mt-16">
-      <div className="w-full max-w-[1182px] bg-white px-4">
+    <div className="w-full flex justify-center mt-16 px-2">
+      <div className="w-full max-w-[1182px] bg-white px-2 sm:px-4">
         {/* Top Bar */}
-        <div className="flex justify-between items-center mt-5 mb-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-5 mb-4 gap-4">
           {/* Search Bar */}
-          <div className="flex items-center w-[350px] h-[40px] pl-3 pr-2 gap-3 rounded-full border border-gray-300 bg-white shadow-sm">
+          <div className="flex items-center w-full sm:w-[350px] h-[40px] pl-3 pr-2 gap-3 rounded-full border border-gray-300 bg-white shadow-sm">
             <Search className="w-4 h-4 text-gray-500" />
             <input
               type="text"
@@ -82,7 +68,7 @@ const Notification = () => {
           </div>
 
           {/* Icons */}
-          <div className="flex items-center w-[150px] h-[40px] bg-white rounded-[12px] border border-gray-300 shadow-sm overflow-hidden">
+          <div className="flex items-center w-full sm:w-[150px] h-[40px] bg-white rounded-[12px] border border-gray-300 shadow-sm overflow-hidden">
             <button
               title="Export"
               className="flex items-center justify-center w-1/3 h-full hover:bg-gray-100"
@@ -105,44 +91,42 @@ const Notification = () => {
             </button>
           </div>
         </div>
-        <div className="w-full mb-10 text-3xl border-b border-gray-200 flex items-center px-2  font-extrabold text-gray-700">
+
+        {/* Heading */}
+        <div className="w-full mb-6 text-2xl sm:text-3xl border-b border-gray-200 flex items-center px-2 font-extrabold text-gray-700">
           Notifications
         </div>
 
+        {/* Notifications List */}
         <div className="w-full">
           {dummyNotifications.map((item, index) => (
             <div
               key={index}
-              className="flex justify-between items-center border-b border-gray-100 px-3 h-[60px] hover:bg-gray-50 transition text-sm"
+              className="flex flex-col sm:flex-row justify-between sm:items-center border-b border-gray-100 px-3 py-3 hover:bg-gray-50 transition text-sm gap-2"
             >
-              {/* Left Side: Checkbox + Star + Sender + Label + Message */}
-              <div className="flex items-center gap-16 w-[90%] overflow-hidden">
-                {/* Checkbox */}
+              {/* Left Side */}
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-6 w-full overflow-hidden">
                 <input type="checkbox" className="w-4 h-4 text-blue-500" />
-
-                {/* Star icon */}
-                <Star className="w-6 h-6 text-yellow-400" />
-
-                {/* Sender */}
-                <span className="font-medium min-w-[120px] truncate">
+                <Star className="w-5 h-5 text-yellow-400" />
+                <span className="font-medium min-w-[90px] truncate">
                   {item.sender}
                 </span>
 
-                {/* Label */}
                 {item.label && (
                   <span
-                    className={`text-xs px-2 py-[1px] rounded-md font-medium ${item.color}`}
+                    className={`text-xs px-2 py-[2px] rounded-md font-medium ${item.color}`}
                   >
                     {item.label}
                   </span>
                 )}
 
-                {/* Message */}
-                <span className="text-gray-600 truncate">{item.message}</span>
+                <span className="text-gray-600 truncate w-full">
+                  {item.message}
+                </span>
               </div>
 
-              {/* Right Side: Time */}
-              <span className="text-gray-500 whitespace-nowrap">
+              {/* Right Side (Time) */}
+              <span className="text-gray-500 text-xs sm:text-sm whitespace-nowrap sm:ml-4">
                 {item.time}
               </span>
             </div>

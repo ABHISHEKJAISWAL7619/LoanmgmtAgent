@@ -4,10 +4,12 @@ const StatsCard = ({ title, icon, count }) => {
   const selectOptions = [{ label: "30 Days", value: "30" }];
 
   return (
-    <div className="bg-white w-[258px] h-[160px] px-6 py-4 flex flex-col justify-between rounded-[8px] shadow-lg">
+    <div className="bg-white w-full max-w-[258px] h-[160px] px-6 py-4 flex flex-col justify-between rounded-[8px] shadow-lg mx-auto">
       {/* Top Section: Title + Select */}
       <div className="flex justify-between items-center">
-        <p className="capitalize text-tertiary  font-extralight">{title}</p>
+        <p className="capitalize text-tertiary font-extralight text-sm">
+          {title}
+        </p>
         <select className="border border-gray-300 rounded-md px-2 py-1 text-sm">
           {selectOptions.map((option, idx) => (
             <option key={idx} value={option.value}>
@@ -26,7 +28,7 @@ const StatsCard = ({ title, icon, count }) => {
           width={56}
           height={56}
         />
-        <span className="text-[#64748B]   text-4xl  font-thin">{count}</span>
+        <span className="text-[#64748B] text-4xl font-thin">{count}</span>
       </div>
     </div>
   );
